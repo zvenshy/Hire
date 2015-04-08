@@ -24,28 +24,18 @@
         drag = isDrag(before);
     };
     canvas.onmousemove = function (e) {
-        if(drag && before) {
-            var after = w2c(canvas, e.clientX, e.clientY);
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.save();
-            context.fillRect(rect.x + (after.x - before.x), rect.y + (after.y - before.y), rect.width, rect.height);
-            context.restore();
-        }
-        
-    }
-    document.onmouseup = function (e) {
+        if(!(drag && before)) return false;
+        var after = w2c(canvas, e.clientX, e.clientY);
+        rect.x += after.x - before.x;
+        rect.y += after.y - before.y;
+        before = after;
         context.save();
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.fillRect(rect.x, rect.y, rect.width, rect.height);
-        context.restore();
-        drag = false;
+        context.restore();       
     }
-    canvas.onmouseup = function (e) {
-        var fina = w2c(canvas, e.clientX, e.clientY);
-        rect.x += fina.x - before.x;
-        rect.y += fina.y - before.y;
+    document.onmouseup = function (e) {
         drag = false;
-        e.stopPropagation();
     }
 })({
     'x': 0,
