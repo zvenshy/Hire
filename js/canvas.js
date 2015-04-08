@@ -20,17 +20,15 @@
     context.fillStyle = '#383838';
     context.fillRect(rect.x, rect.y, rect.width, rect.height);
     canvas.onmousedown = function (e) {
-        console.log(drag, before);
         before = w2c(canvas, e.clientX, e.clientY);
         drag = isDrag(before);
-        console.log(drag, before)
     };
     canvas.onmousemove = function (e) {
         if(drag && before) {
             var after = w2c(canvas, e.clientX, e.clientY);
             context.clearRect(0, 0, canvas.width, canvas.height);
             context.save();
-            context.fillRect( rect.x + (after.x - before.x), rect.y + (after.y - before.y), rect.width, rect.height);
+            context.fillRect(rect.x + (after.x - before.x), rect.y + (after.y - before.y), rect.width, rect.height);
             context.restore();
         }
         
@@ -38,7 +36,7 @@
     document.onmouseup = function (e) {
         context.save();
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.fillRect( rect.x, rect.y, rect.width, rect.height);
+        context.fillRect(rect.x, rect.y, rect.width, rect.height);
         context.restore();
         drag = false;
     }
