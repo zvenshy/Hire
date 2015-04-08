@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+$button-color: #aaa;
+$bg-color: #f1f1f1;
+
+html {
+    height: 1000px;
+    scrollbar-arrow-color: #505050;
+    scrollbar-face-color: #aaa;
+    scrollbar-3dlight-color: #aaa; 
+    scrollbar-highlight-color: #aaa;
+    scrollbar-shadow-color: #aaa;
+    scrollbar-darkshadow-color: #f1f1f1; 
+    scrollbar-track-color: #f1f1f1; 
+}
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border: 1px solid $bg-color;
+}
+::-webkit-scrollbar-track-piece {
+    background: $bg-color;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbcbcb; 
+
+    &:hover {
+        background: $button-color; 
+    }
+}
